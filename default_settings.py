@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     # Third-Party Apps
     "rest_framework",
     # Local applications (e.g. "core.<application-name>")
+    "core.Event",
 ]
 
 MIDDLEWARE = [
