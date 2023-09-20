@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
 
 # Translations
 *.mo
@@ -9,7 +10,7 @@ __pycache__/
 
 # Django stuff:
 *.log
-configs/settings.py
+configs/
 *.sqlite3
 
 # IPython
