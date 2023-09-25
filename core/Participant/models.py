@@ -9,5 +9,6 @@ class Participant(models.Model):
     joined_stamp = models.DateTimeField(auto_now_add=True)
     telegram_id = models.CharField(max_length=64)
     events = models.ManyToManyField(Event)
+
     class Meta:
         db_table = "participants"
