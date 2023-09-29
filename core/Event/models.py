@@ -11,7 +11,7 @@ class Event(models.Model):
 
 
 class EventLog(models.Model):
-    participan = models.ForeignKey("Participant.Participan", on_delete=models.CASCADE,)
+    participan = models.ForeignKey("Participant.Participant", on_delete=models.CASCADE,)
     event = models.ForeignKey(Event, on_delete=models.PROTECT)
     created_stamp = models.DateTimeField(auto_now_add=True)
 
