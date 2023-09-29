@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     "rest_framework",
     # Local applications (e.g. "core.<application-name>")
     "core.Event",
+    "core.Participant",
 ]
 
 MIDDLEWARE = [
