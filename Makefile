@@ -2,7 +2,7 @@ runserver:
 	python manage.py runserver
 
 tests:
-	python manage.py test
+	python manage.py test -v 2 --keepdb
 
 format:
 	black -l 120 .
