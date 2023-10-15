@@ -17,4 +17,4 @@ class EventLogFactory(django.DjangoModelFactory):
     event = SubFactory(EventFactory)
 
     class Meta:
-        model = models.Event
+        model = models.EventLog
