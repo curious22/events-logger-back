@@ -6,10 +6,8 @@ class Token(models.Model):
     name = models.CharField(max_length=100)
     data = models.CharField(max_length=64, default=secrets.token_hex, unique=True)
     is_active = models.BooleanField(default=True)
-    created_stamp = models.DateTimeField(auto_now_add=True)
-    expires_at = models.DateTimeField()
-
-    objects = TokenManager()  # Подключаем менеджер объектов
+    
+  # Подключаем менеджер объектов
 
     def save(self, *args, **kwargs):
         if not self.expires_at:
