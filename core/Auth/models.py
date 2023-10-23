@@ -1,12 +1,5 @@
-import secrets
-
 from django.db import models
-from django.utils import timezone
 
-
-class TokenManager(models.Manager):
-    def is_token_exists(self, token_value):
-        return self.filter(token=token_value).exists()
 
 
 class Token(models.Model):
