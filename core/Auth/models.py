@@ -11,7 +11,7 @@ class TokenManager(models.Manager):
 
 class Token(models.Model):
     name = models.CharField(max_length=100)
-    token = models.CharField(max_length=64, default=secrets.token_hex, unique=True)
+    data = models.CharField(max_length=64, default=secrets.token_hex, unique=True)
     is_active = models.BooleanField(default=True)
     created_stamp = models.DateTimeField(auto_now_add=True)
     expires_at = models.DateTimeField()
