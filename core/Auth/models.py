@@ -6,7 +6,7 @@ class Token(models.Model):
     name = models.CharField(max_length=100)
     data = models.CharField(max_length=64, default=secrets.token_hex, unique=True)
     is_active = models.BooleanField(default=True)
-    
+    expared_at = models.DateField()
   # Подключаем менеджер объектов
 
     def save(self, *args, **kwargs):
