@@ -7,12 +7,7 @@ class Token(models.Model):
     data = models.CharField(max_length=64, default=secrets.token_hex, unique=True)
     is_active = models.BooleanField(default=True)
     expared_at = models.DateField()
-  # Подключаем менеджер объектов
 
-    def save(self, *args, **kwargs):
-        if not self.expires_at:
-            self.expires_at = timezone.now() + timezone.timedelta(days=1)
-        super().save(*args, **kwargs)
 
     class Meta:
         db_table = "tokens"
