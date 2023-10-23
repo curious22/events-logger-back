@@ -12,13 +12,13 @@ class Token(models.Model):
     class Meta:
         db_table = "tokens"
 
-    @staticmethod
-    def create_token(name, expires_at=None):
+    @classmethod
+    def create_token(name, expared_at=None):
         token = Token(name=name)
-        if expires_at:
-            token.expires_at = expires_at
+        if expared_at:
+            token.expared_at = expared_at
         while True:
-            new_token = secrets.token_hex(32)
+            new_token = secrets.token_hex()
             if not Token.objects.filter(token=new_token).exists():
                 token.token = new_token
                 break
