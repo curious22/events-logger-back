@@ -1,5 +1,6 @@
-from django.db import models
+import secrets
 
+from django.db import models
 
 
 class Token(models.Model):
@@ -8,27 +9,22 @@ class Token(models.Model):
     is_active = models.BooleanField(default=True)
     expared_at = models.DateField()
 
-
     class Meta:
         db_table = "tokens"
 
     @classmethod
     def create_token(name, expared_at=None):
-        token = Token(name=name)
+        data = Token(name=name)
         if expared_at:
-            token.expared_at = expared_at
+            data.expared_at = expared_at
         while True:
-            new_token = secrets.token_hex()
-            if not Token.objects.filter(token=new_token).exists():
-                token.token = new_token
+            new_data = secrets.token_hex()
+            if not Token.objects.filter(token=new_data).exists():
+                data.token = new_data
                 break
-        token.save()
-        return token
+        data.save()
+        return data
 
-    @staticmethod
-    def is_valid_token(token_value):
-        try:
-            token = Token.objects.get(token=token_value, is_active=True, expires_at__gt=timezone.now())
-            return True
-        except Token.DoesNotExist:
-            return False
+    @classmethod
+    def is_token_exists(cls, data_value):
+        return cls.objects.filter(data=data_value, is_active=True).exists()
