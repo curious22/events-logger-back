@@ -1,12 +1,13 @@
-import factory
 import secrets
+
+import factory
+
 from .models import Token
 
+
 class TokenFactory(factory.Factory):
+    name = factory.Faker("name")
+    data = factory.LazyFunction(lambda: secrets.token_hex())  
+
     class Meta:
         model = Token
-
-    name = factory.Faker('name') 
-    data = factory.LazyFunction(lambda: secrets.token_hex()) 
-    is_active = True
-    expired_at = None
