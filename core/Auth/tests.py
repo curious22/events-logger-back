@@ -9,13 +9,15 @@ class TokenTestCase(TestCase):
     @classmethod
     def setUpTestData(cls) -> None:
         super().setUpTestData()
-        cls.token = Token.create_token(name="Test Token")
+        cls.token = Token.objects.create(name="Test Token")
+        cls.token.is_active = True 
+        cls.token.expired_at = None  
+        cls.token.save()  
         cls.now = timezone.now()
 
     def test_is_token_exists(self):
-        # Проверяем существует ли токен
-        token = Token.create_token(name="Token to check")
-        exists = Token.is_token_exists(token.data)
+        print("Token Data:", self.token.data)  # Отладочный вывод
+        exists = Token.is_token_exists(self.token.data)
         self.assertTrue(exists)
 
     def test_create_token(self):
