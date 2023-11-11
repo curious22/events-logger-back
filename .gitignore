@@ -45,5 +45,6 @@ env.bak/
 venv.bak/
 
 .idea/
+*_dev.py
 
 !.gitignore
