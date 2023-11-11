@@ -10,9 +10,9 @@ class TokenTestCase(TestCase):
     def setUpTestData(cls) -> None:
         super().setUpTestData()
         cls.token = Token.objects.create(name="Test Token")
-        cls.token.is_active = True 
-        cls.token.expired_at = None  
-        cls.token.save()  
+        cls.token.is_active = True
+        cls.token.expired_at = None
+        cls.token.save()
         cls.now = timezone.now()
 
     def test_is_token_exists(self):
