@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+**/__pycache__/
 *.py[cod]
 *$py.class
 *.pyc
@@ -45,5 +45,6 @@ env.bak/
 venv.bak/
 
 .idea/
+*_dev.py
 
 !.gitignore

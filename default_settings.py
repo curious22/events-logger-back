@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     # Local applications (e.g. "core.<application-name>")
     "core.Event",
     "core.Participant",
+    "core.Auth",
 ]
 
 MIDDLEWARE = [
