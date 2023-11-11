@@ -16,10 +16,4 @@ class Token(models.Model):
 
     @classmethod
     def is_token_exists(cls, data_value):
-        filter_result = cls.objects.filter(
-            data=data_value,
-            is_active=True,
-            expired_at__isnull=True,
-        )
-        print("Filter Result Count:", filter_result.count())  # Добавляем отладочный вывод
-        return filter_result.exists()
+        return cls.objects.filter(data=data_value, is_active=True).exists()

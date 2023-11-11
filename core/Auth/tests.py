@@ -1,4 +1,4 @@
-from dateutil.relativedelta import relativedelta
+from django.db.utils import IntegrityError
 from django.test import TestCase
 from django.utils import timezone
 
@@ -39,8 +39,7 @@ class TokenTestCase(TestCase):
 
         self.assertFalse(Token.is_token_exists(data_value=self.token.data))
 
-    def test_is_token_exists_expired_by_date(self):
-        yesterday = (self.now - relativedelta(days=1)).date()
-        Token.objects.filter(pk=self.token.pk).update(expired_at=yesterday)
-
-        self.assertFalse(Token.is_token_exists(data_value=self.token.data))
+    def test_data_is_unique(self):
+        data = {"name": "New name", "data": self.token.data}  # data must be unique
+        with self.assertRaises(IntegrityError):
+            Token.objects.create(**data)
